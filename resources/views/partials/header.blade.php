@@ -18,25 +18,29 @@
 
                 </div>
                 <div id="right">
+                     @if(Auth::check())
                     <div class="row">
-                        <p>{{Auth()::$user->name}}</p>
+                        <p>{{Auth::user()->name}}</p>
                     </div>
+                    @endif
                     <div class="row">
                         @if(Auth::check())
                         <a href="" class="button button3">
-                        <span class="icon"><img src="" ></span>Profile</a>
+                        <span class="icon"></span>Profile</a>
                         @endif
                         @if(!Auth::check())
-                        <a class="button button3"
-                            style="cursor: pointer"
-                            data-toggle="modal"
-                            data-target="#loginModal">Login</a>
+                       <a method="GET" href="{{ route('login') }}" class="button button3">
+                        <span class="icon"></span>Login</a>
                         @endif
                     </div>
                     <div class="row">
                         @if(!Auth::check())
                         <a href="{{ route('addUser') }}" class="button button3">
-                        <span class="icon"><img src="" ></span>Registration</a>
+                        <span class="icon"></span>Registration</a>
+                        @endif
+                        @if(Auth::check())
+                        <a href="{{ route('logout') }}" class="button button3">
+                        <span class="icon"></span>Logout</a>
                         @endif
                     </div>
                 </div>
@@ -44,5 +48,3 @@
         </div>
     </div>
 </header>
-
-@include('userAuthentication.login')

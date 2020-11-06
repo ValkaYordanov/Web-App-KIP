@@ -2,20 +2,24 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\LoginPostRequest;
 use App\Models\User;
 use Auth;
-use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
 
+    public function login()
+    {
+        return view('userAuthentication.login');
+    }
     public function destroyLogout()
     {
         auth()->logout();
         return redirect(route('home'));
     }
 
-    public function storeLogin(Request $request)
+    public function storeLogin(LoginPostRequest $request)
     {
 
         if (Auth::attempt(request(['email', 'password']))) {
@@ -26,7 +30,7 @@ class LoginController extends Controller
 
         }
 
-        return redirect()->back()->withInput()->withError('wrongCredentials', "Невалидни данни. Моля въведете съществуващ профил!");
+        return redirect()->back()->withInput()->withError("Wrong credentials! Insert valid one!");
 
     }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\RegistrationPostRequest;
 use App\Models\User;
+use Auth;
 
 class RegistrationController extends Controller
 {
@@ -35,6 +36,7 @@ class RegistrationController extends Controller
 
         ]);
 
+        Auth::login($user);
         return redirect(route('home'));
 
     }

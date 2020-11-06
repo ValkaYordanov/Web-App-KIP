@@ -1,25 +1,30 @@
-<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModal" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="loginModal">Login</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
-            </div>
-            <div class="modal-body">
+@extends('layouts.master')
+@section('content')
+<main>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-sm-12 col-xl-10">
+                <br>
+                <hr>
+                <h1>Login</h1>
+                <hr>
+                <br>
+                <br>
+
+
                 <form method="POST" action="{{ route('login') }}">
                     @csrf
 
 
 
-                   <div class="form__group">
+                <div class="form__group">
                         <label>
                             <div class="form__label">
                                 Email:
                             </div>
 
-                            <input class="inputClass" type="email" name="email" id="email">
+                            <input class="inputClass" type="email" name="email" id="email" value="{{ old('email') }}">
+                            @if ($errors->has('email')) <p style="color:red;">{{ $errors->first('email') }}</p> @endif
 
 
                         </label>
@@ -32,34 +37,29 @@
                             </div>
 
                             <input class="inputClass" type="password" name="password" id="password">
-                            @if ($errors->has('wrongCredentials')) <p style="color:red;">{{ $errors->first('wrongCredentials') }}</p> @endif
+                            @if ($errors->has('password')) <p style="color:red;">{{ $errors->first('password') }}</p> @endif
+                            @if (session('error'))<p style="color:red;">{{ session('error') }}</p>  @endif
 
                         </label>
                     </div>
 
 
-                    <div class="form-group row mb-0">
-                        <div class="col-md-8 offset-md-4">
-                            <button type="submit" class="button button4">
-                              Login
-                            </button>
+                    <div class="form__row form__row--buttons">
+                        <div class="form__group">
+                            <button class="button button4">Login</button>
                         </div>
+
+                        <!-- /form__group -->
                     </div>
+
+                    <br>
+                    <br>
+                    <br>
                 </form>
             </div>
         </div>
     </div>
-</div>
-@section('scripts')
-@parent
 
-@if($errors->has('wrongCredentials'))
-    <script>
-    $(function() {
-        $('#loginModal').modal({
-            show: true
-        });
-    });
-    </script>
-@endif
+
+</main>
 @endsection

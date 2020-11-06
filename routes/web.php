@@ -15,6 +15,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'ProductController@home')->name("home");
 
 Route::post('/login', 'LoginController@storeLogin')->name("login");
+Route::get('/login', 'LoginController@login')->name("login");
+
 Route::get('/logout', 'LoginController@destroyLogout')->name("logout");
 
 Route::post('/registration', 'RegistrationController@create')->name("registration");
