@@ -19,7 +19,7 @@
                 </div>
                 <div id="right">
                     <div class="row">
-                        <p>Valentin Yordanov</p>
+                        <p>{{Auth()::$user->name}}</p>
                     </div>
                     <div class="row">
                         @if(Auth::check())

@@ -18,12 +18,10 @@ class LoginController extends Controller
     public function storeLogin(Request $request)
     {
 
-        $remember = $request->Input('remember');
-
-        if (Auth::attempt(request(['email', 'password']), $remember)) {
+        if (Auth::attempt(request(['email', 'password']))) {
             $user = User::where(["email" => $request['email']])->first();
 
-            Auth::login($user, $remember);
+            Auth::login($user);
             return redirect(route('home'));
 
         }
