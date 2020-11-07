@@ -8,4 +8,14 @@ class ProductController extends Controller
     {
         return view('products.main');
     }
+
+    public function printAllProducts()
+    {
+        return view('products.allProducts');
+    }
+
+    public function addProduct()
+    {
+        return view('products.addProduct');
+    }
 }

@@ -3,7 +3,7 @@
 <main>
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-sm-12 col-xl-10">
+            <div class="col-sm-12 col-xl-4">
                 <br>
                 <hr>
                 <h1>Login</h1>

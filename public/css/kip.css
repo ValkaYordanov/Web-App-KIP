@@ -1011,6 +1011,17 @@ input {
     border-radius: 5px;
    
 }
+
+
+
+.inputClassProd {
+
+     
+  
+  box-sizing: border-box;
+  border: 2px solid rgb(216, 148, 143);
+  border-radius: 10px;
+}
 /* @media screen and (min-height: 800px) {
     main {
         height: calc(100vh - 340px);

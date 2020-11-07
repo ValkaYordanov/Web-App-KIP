@@ -22,7 +22,7 @@
                         @if(Auth::check())
                         @if(Auth::user()->type =="admin")
                         <a href="" class="button button3">Orders</a>
-                        <a href="" class="button button3">Products</a>
+                        <a href="{{ route('allProducts') }}" class="button button3">Products</a>
                         <a href="" class="button button3">Users</a>
                         @endif
                         @endif
