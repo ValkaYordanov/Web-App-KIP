@@ -1,28 +1,11 @@
 @extends('layouts.master')
 @section('content')
-<style>
-#myDiv {
 
-    font-size: 20px;
-    height: 50px;
-    overflow: hidden;
-    width: 650px;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-}
-</style>
 
 <main>
     <br>
     <br>
-    <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-sm-12 col-xl-10">
-                    <a href="{{ route('addProduct') }}" class="button button3">Add new product</a>
 
-                </div>
-            </div>
-    </div>
 
 
       @foreach($products as $product)

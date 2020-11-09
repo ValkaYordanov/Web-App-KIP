@@ -11,7 +11,7 @@
                     <br>
                 <div  class="col-sm-12 col-xl-6">
 
-                    <form method="POST"  action="{{ route('addProduct') }}">
+                    <form method="POST"  action="{{ route('createProduct') }}" enctype="multipart/form-data">
                         @csrf
 
 
@@ -41,9 +41,10 @@
 
                         <div class="form-group">
                             <label for="file">Upload picture:</label>
-                            <input type="file" class="inputClassProd" name="file" >
+                            <input type="file" class="inputClassProd" id="file" name="image" >
 
                         </div>
+
 
                         <div class="form__row form__row--buttons">
                             <div class="form__group">

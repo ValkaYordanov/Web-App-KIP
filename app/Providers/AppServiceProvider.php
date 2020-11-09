@@ -13,7 +13,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->singleton('slugifier', function ($app) {
+            return new \Cocur\Slugify\Slugify();
+        });
+
     }
 
     /**

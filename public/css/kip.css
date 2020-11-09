@@ -169,7 +169,7 @@ p {
     align-items: center;
 }
 
-.add-new-user.visible {
+ dd-new-user.visible {
     display: flex;
 }
 
@@ -1022,6 +1022,54 @@ input {
   border: 2px solid rgb(216, 148, 143);
   border-radius: 10px;
 }
+
+
+
+.card {
+  box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.2);
+  font-family: arial;
+}
+
+.price {
+  color: grey;
+  font-size: 16px;
+}
+
+.card button {
+  border: none;
+  outline: 0;
+  padding: 5px 32px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+
+}
+
+.column-button {
+  margin: auto;
+  position: absolute;
+  top: 50%;
+  left: 95%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.column {
+  float: left;
+  width: 33.33%;
+  padding: 20px;
+  height: 200px; /* Should be removed. Only for demonstration */
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  clear: both;
+}
+
 /* @media screen and (min-height: 800px) {
     main {
         height: calc(100vh - 340px);
