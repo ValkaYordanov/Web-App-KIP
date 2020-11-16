@@ -12,6 +12,7 @@
 
 
                         @if(Auth::guest() || Auth::user()->type =="normal")
+                        <a href="{{ route('home') }}" class="button button3">Home</a>
                         <a href="" class="button button3">Menu</a>
                         <a href="" class="button button3">Delivery</a>
                         <a href="" class="button button3">About</a>

@@ -21,6 +21,17 @@
                             @if ($errors->has('name')) <p style="color:red;">{{ $errors->first('name') }}</p> @endif
                         </div>
 
+                         <div class="form-group">
+                            <label for="name">Category:</label>
+                            <select name="categories" class="inputClassProd" >
+                                @foreach($categories as $category)
+                                <option value="{{$category->id}}">{{$category->name}}</option>
+                                @endforeach
+                            </select>
+                            @if ($errors->has('name')) <p style="color:red;">{{ $errors->first('name') }}</p> @endif
+                        </div>
+
+
                         <div class="form-group">
                             <label for="description">Description:</label>
                             <textarea id="description" id="description" name="description" rows="4" cols="50"></textarea>

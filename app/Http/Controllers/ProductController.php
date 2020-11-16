@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Product;
 use Cocur\Slugify\Slugify;
 use Illuminate\Http\Request;
@@ -23,7 +24,8 @@ class ProductController extends Controller
 
     public function addProduct()
     {
-        return view('products.addProduct');
+        $categories = Category::all();
+        return view('products.addProduct', compact('categories'));
     }
 
     public function createProduct(Request $request)
@@ -79,6 +81,13 @@ class ProductController extends Controller
         $productObj->delete();
 
         return redirect(route('allProducts'));
+    }
+
+    public function meatProducts()
+    {
+        $products = Product::where('category', 'meat')->get();
+        return view('products.allProducts', compact('products'));
+
     }
 
     /* public function edit(Request $request, $url)

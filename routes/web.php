@@ -17,6 +17,10 @@ Route::get('/allProducts', 'ProductController@printAllProducts')->name("allProdu
 Route::get('/addProduct', 'ProductController@addProduct')->name("addProduct");
 Route::post('/addProduct', 'ProductController@createProduct')->name("createProduct");
 Route::get('/{product}/delete', 'ProductController@delete')->name("product.delete");
+Route::get('/meat', 'ProductController@meatProducts')->name("meat");
+Route::get('/salads', 'ProductController@saladProducts')->name("salads");
+Route::get('/potatoes', 'ProductController@potatoesProducts')->name("potatoes");
+Route::get('/drinks', 'ProductController@drinkProducts')->name("drinks");
 
 Route::post('/login', 'LoginController@storeLogin')->name("login");
 Route::get('/login', 'LoginController@login')->name("login");
