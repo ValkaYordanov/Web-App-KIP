@@ -26,7 +26,11 @@ class ProductPostRequest extends FormRequest
     {
 
         $rules = [
-            'file' => 'required|file|mimes:jpg,jpeg,bmp,png,doc,docx,csv,rtf,xlsx,xls,txt,pdf,zip',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'name' => 'required',
+            'category' => 'required',
+            'price' => 'required|numeric|min:0',
+            'stock' => 'required|numeric|min:0',
 
         ];
 
@@ -41,8 +45,11 @@ class ProductPostRequest extends FormRequest
     public function attributes()
     {
         return [
-            'file' => 'File',
-
+            'image' => 'Image',
+            'name' => 'Name',
+            'category' => 'Category',
+            'price' => 'Price',
+            'stock' => 'Stock',
         ];
     }
 
@@ -57,7 +64,7 @@ class ProductPostRequest extends FormRequest
             'required' => 'The :attribute field is required!',
             'mimes' => 'mimes wrong',
 
-            'file' => 'file is wrong',
+            'image' => 'Image is wrong!',
         ];
     }
 

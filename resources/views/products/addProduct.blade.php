@@ -23,12 +23,13 @@
 
                          <div class="form-group">
                             <label for="name">Category:</label>
-                            <select name="categories" class="inputClassProd" >
+                            <select name="category" class="inputClassProd" >
+                            <option></option>
                                 @foreach($categories as $category)
                                 <option value="{{$category->id}}">{{$category->name}}</option>
                                 @endforeach
                             </select>
-                            @if ($errors->has('name')) <p style="color:red;">{{ $errors->first('name') }}</p> @endif
+                            @if ($errors->has('category')) <p style="color:red;">{{ $errors->first('category') }}</p> @endif
                         </div>
 
 
@@ -53,7 +54,7 @@
                         <div class="form-group">
                             <label for="file">Upload picture:</label>
                             <input type="file" class="inputClassProd" id="file" name="image" >
-
+                            @if ($errors->has('file')) <p style="color:red;">{{ $errors->first('file') }}</p> @endif
                         </div>
 
 

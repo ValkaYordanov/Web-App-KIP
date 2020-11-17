@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ProductPostRequest;
 use App\Models\Category;
 use App\Models\Product;
 use Cocur\Slugify\Slugify;
-use Illuminate\Http\Request;
 use Image;
 
 class ProductController extends Controller
@@ -28,14 +28,8 @@ class ProductController extends Controller
         return view('products.addProduct', compact('categories'));
     }
 
-    public function createProduct(Request $request)
+    public function createProduct(Category $category, ProductPostRequest $request)
     {
-
-        $request->validate([
-
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-
-        ]);
 
         $image = $request->file('image');
         $filename = $request->file('image')->getClientOriginalName();
@@ -61,7 +55,7 @@ class ProductController extends Controller
         $product = Product::create([
 
             'name' => $request->input('name'),
-            'category_id' => 2,
+            'category_id' => $request->category,
             'url' => $slug,
             'description' => $request->input('description'),
             'price' => $request->input('price'),
@@ -85,8 +79,15 @@ class ProductController extends Controller
 
     public function meatProducts()
     {
-        $products = Product::where('category', 'meat')->get();
-        return view('products.allProducts', compact('products'));
+        $products = Product::where('category_id', 2)->get();
+        return view('products.printProducts', compact('products'));
+
+    }
+
+    public function saladProducts()
+    {
+        $products = Product::where('category_id', 1)->get();
+        return view('products.printProducts', compact('products'));
 
     }
 
