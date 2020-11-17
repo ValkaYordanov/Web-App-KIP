@@ -42,11 +42,7 @@ input{
                     </div>
                     <div style="width: 25%;"   class="column-button">
                         <div class="row">
-                            <div class="number-input">
-                                <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" ></button>
-                                <input class="quantity" min="0" name="quantity" value="0" type="number">
-                                <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
-                            </div>
+                                <input class="quantity" style="width: 35%;" min="0" name="quantity" value="0" type="number">
                         </div>
                         <br>
                         <div class="row">
