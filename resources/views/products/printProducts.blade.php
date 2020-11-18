@@ -30,6 +30,8 @@ input{
         <div class="container">
             <br>
             <div class="card">
+            <form method="post" action="{{ route('addOrderLine',$product) }}">
+                            @csrf
                 <div class="row">
                     <div style="width: 15%;" class="column">
                         <img src="{{ $product->pic_path }}" width="150" height="150">
@@ -46,10 +48,14 @@ input{
                         </div>
                         <br>
                         <div class="row">
-                            <p><a class="button button3"  href="">Add</a></p>
+
+
+                              <button type="submit" class="button button3" >Add</button>
+
                         </div>
                     </div>
                 </div>
+                </form>
             </div>
         </div>
     @endforeach

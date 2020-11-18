@@ -91,6 +91,20 @@ class ProductController extends Controller
 
     }
 
+    public function potatoeProducts()
+    {
+        $products = Product::where('category_id', 3)->get();
+        return view('products.printProducts', compact('products'));
+
+    }
+
+    public function drinkProducts()
+    {
+        $products = Product::where('category_id', 4)->get();
+        return view('products.printProducts', compact('products'));
+
+    }
+
     /* public function edit(Request $request, $url)
 {
 
