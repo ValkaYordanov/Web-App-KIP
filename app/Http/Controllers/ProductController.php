@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProductPostRequest;
+use App\Models\Cart;
 use App\Models\Category;
 use App\Models\Product;
 use Cocur\Slugify\Slugify;
+use Illuminate\Http\Request;
 use Image;
+use Session;
 
 class ProductController extends Controller
 {
@@ -103,6 +106,28 @@ class ProductController extends Controller
         $products = Product::where('category_id', 4)->get();
         return view('products.printProducts', compact('products'));
 
+    }
+
+    public function getAddToCart(Request $request, $id)
+    {
+        $product = Product::find($id);
+        $oldCart = Session::has('cart') ? Session::get('cart') : null;
+        $cart = new Cart($oldCart);
+        $cart->add($product, $product->id);
+
+        $request->session()->put('cart', $cart);
+
+        return redirect()->back();
+    }
+
+    public function getCart()
+    {
+        if (!Session::has('cart')) {
+            return view('shopping-cart', ['products' => null]);
+        }
+        $oldCart = Session::get('cart');
+        $cart = new Cart($oldCart);
+        return view('products.shopping-cart', ['products' => $cart->items, 'totalPrice' => $cart->totalPrice]);
     }
 
     /* public function edit(Request $request, $url)

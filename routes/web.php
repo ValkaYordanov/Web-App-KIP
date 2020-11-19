@@ -22,7 +22,8 @@ Route::get('/salads', 'ProductController@saladProducts')->name("salads");
 Route::get('/potatoes', 'ProductController@potatoeProducts')->name("potatoes");
 Route::get('/drinks', 'ProductController@drinkProducts')->name("drinks");
 
-Route::post('/{product}/addOrderLine', 'OrderLineController@addOrderLine')->name('addOrderLine');
+Route::get('/addOrderLine/{id}', 'ProductController@getAddToCart')->name('addOrderLine');
+Route::get('/shoppingCart', 'ProductController@getCart')->name('shoppingCart');
 
 Route::post('/login', 'LoginController@storeLogin')->name("login");
 Route::get('/login', 'LoginController@login')->name("login");

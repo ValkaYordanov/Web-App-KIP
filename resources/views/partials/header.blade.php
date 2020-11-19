@@ -38,6 +38,12 @@
                         <p>{{Auth::user()->name}}</p>
                     </div>
                     @endif
+                     <div class="row">
+                        <a href="{{route('shoppingCart') }}">
+                        <p><img src="images/cart.png" width="30" height="30" alt="">
+                            Shpping cart: <span class="badge">{{Session::has('cart') ? Session::get('cart')->totalQuantity : '' }}</span></p>
+                        </a>
+                    </div>
                     <div class="row">
                         @if(Auth::check())
                         <a href="" class="button button3">
