@@ -33,17 +33,23 @@
                 </div>
                  <div class="vl   mr-3"></div>
                 <div id="right">
-                     @if(Auth::check())
-                    <div class="row">
-                        <p>{{Auth::user()->name}}</p>
+
+                  <div class="row">
+                        @if(Auth::check())
+
+                        <p>{{Auth::user()->name}} {{Auth::user()->last_name}}</p>
+
+                        @endif
                     </div>
-                    @endif
-                     <div class="row">
+
+                    <div class="row">
                         <a href="{{route('shoppingCart') }}">
                         <p><img src="images/cart.png" width="30" height="30" alt="">
-                            Shpping cart: <span class="badge">{{Session::has('cart') ? Session::get('cart')->totalQuantity : '' }}</span></p>
+                            Shpping cart: <span><strong>{{ Session::has('cart') ? Session::get('cart')->totalQuantity : '' }}</strong></span></p>
                         </a>
                     </div>
+
+
                     <div class="row">
                         @if(Auth::check())
                         <a href="" class="button button3">
@@ -53,8 +59,7 @@
                        <a method="GET" href="{{ route('login') }}" class="button button3">
                         <span class="icon"></span>Login</a>
                         @endif
-                    </div>
-                    <div class="row">
+
                         @if(!Auth::check())
                         <a href="{{ route('addUser') }}" class="button button3">
                         <span class="icon"></span>Registration</a>

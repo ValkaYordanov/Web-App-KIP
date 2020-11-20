@@ -18,6 +18,8 @@ class CreateOrdersTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->date('date')->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->text('cart');
+            $table->decimal('totalPrice');
             $table->timestamps();
 
         });

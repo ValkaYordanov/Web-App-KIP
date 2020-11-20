@@ -38,7 +38,11 @@ input{
                     <div  style="width: 60%;" class="column">
                         <h1>{{ $product->name }}</h1>
                         <p class="price">Price: {{ $product->price }}</p>
-                        <p class="price">Stock :{{ $product->stock }}</p>
+                        @if($product->stock<=0)
+                            <p class="price">Out of Stock</p>
+                        @else
+                            <p class="price">Stock :{{ $product->stock }}</p>
+                        @endif
                         <p  id="myDiv">{{ $product->description }}</p>
                     </div>
                     <div style="width: 25%;"   class="column-button">
@@ -47,7 +51,12 @@ input{
                         </div>
                         <br>
                         <div class="row">
-                              <a role="button" href="{{ route('addOrderLine',$product->id) }}" class="button button3" >Add</a>
+                         @if($product->stock<=0)
+                            <p>Out of Stock</p>
+                        @else
+                          <a role="button" href="{{ route('addToCart', $product->id) }}" class="button button3" >Add</a>
+                        @endif
+
                         </div>
                     </div>
                 </div>
