@@ -24,6 +24,8 @@ Route::get('/drinks', 'ProductController@drinkProducts')->name("drinks");
 
 Route::get('/addOrderLine/{id}', 'ProductController@addToCart')->name('addToCart');
 Route::get('/shoppingCart', 'ProductController@getCart')->name('shoppingCart');
+Route::get('/reduceOne/{id}', 'ProductController@reduceQuantityByOnee')->name('reduceOne');
+Route::get('/removeProduct/{id}', 'ProductController@removeProductFromCart')->name('removeProduct');
 
 Route::get('/finishOrder', 'OrderController@store')->name('finishOrder');
 

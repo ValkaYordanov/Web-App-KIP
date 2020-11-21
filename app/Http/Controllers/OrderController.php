@@ -27,4 +27,5 @@ class OrderController extends Controller
         Session::forget('cart');
         return redirect(route('home'));
     }
+
 }

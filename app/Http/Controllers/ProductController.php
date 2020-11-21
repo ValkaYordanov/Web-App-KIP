@@ -127,6 +127,54 @@ class ProductController extends Controller
         return redirect()->back();
     }
 
+    public function reduceQuantityByOnee($id)
+    {
+        $oldCart = Session::has('cart') ? Session::get('cart') : null;
+        $cart = new Cart($oldCart);
+        $cart->reduceOne($id);
+        $product = Product::find($id);
+        $productQuantity = $product->stock + 1;
+
+        $product->update([
+            'stock' => $productQuantity,
+
+        ]);
+
+        if (count($cart->items) > 0) {
+            Session::put('cart', $cart);
+        } else {
+            Session::forget('cart');
+        }
+
+        return redirect(route('shoppingCart'));
+
+    }
+
+    public function removeProductFromCart($id)
+    {
+        $oldCart = Session::has('cart') ? Session::get('cart') : null;
+        $cart = new Cart($oldCart);
+        $quantity = $cart->items[$id]['qty'];
+        $cart->removeProduct($id);
+
+        $product = Product::find($id);
+        $productQuantity = $product->stock + $quantity;
+
+        $product->update([
+            'stock' => $productQuantity,
+
+        ]);
+
+        if (count($cart->items) > 0) {
+            Session::put('cart', $cart);
+        } else {
+            Session::forget('cart');
+        }
+
+        return redirect(route('shoppingCart'));
+
+    }
+
     public function getCart()
     {
         if (!Session::has('cart')) {

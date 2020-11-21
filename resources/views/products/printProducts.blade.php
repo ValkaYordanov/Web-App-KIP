@@ -2,7 +2,6 @@
 @section('content')
 <style>
 #myDiv {
-
     font-size: 20px;
     height: 50px;
     overflow: hidden;
@@ -20,7 +19,6 @@ input{
       display: inline-block;
       vertical-align: middle;
 }
-
 </style>
 
 <main>
@@ -41,22 +39,21 @@ input{
                         @if($product->stock<=0)
                             <p class="price">Out of Stock</p>
                         @else
-                            <p class="price">Stock :{{ $product->stock }}</p>
+                            <p class="price">Stock: {{ $product->stock }}</p>
                         @endif
                         <p  id="myDiv">{{ $product->description }}</p>
                     </div>
                     <div style="width: 25%;"   class="column-button">
                         <div class="row">
-                                <input class="quantity" style="width: 35%;" min="0" name="quantity" value="0" type="number">
+                            <input class="quantity" style="width: 35%;" min="0" name="quantity" value="0" type="number">
                         </div>
                         <br>
                         <div class="row">
-                         @if($product->stock<=0)
-                            <p>Out of Stock</p>
-                        @else
-                          <a role="button" href="{{ route('addToCart', $product->id) }}" class="button button3" >Add</a>
-                        @endif
-
+                            @if($product->stock<=0)
+                                <p>Out of Stock</p>
+                            @else
+                            <a role="button" href="{{ route('addToCart', $product->id) }}" class="button button3" >Add</a>
+                            @endif
                         </div>
                     </div>
                 </div>
