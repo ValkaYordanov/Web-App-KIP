@@ -1029,6 +1029,10 @@ input {
   box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.2);
   font-family: arial;
 }
+.cardCart {
+  box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.2);
+  font-family: arial;
+}
 
 .price {
   color: grey;

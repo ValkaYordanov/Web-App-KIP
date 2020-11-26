@@ -12,6 +12,7 @@ class OrderController extends Controller
 
     public function store()
     {
+
         $oldCart = Session::get('cart');
         $cart = new Cart($oldCart);
 

@@ -27,6 +27,8 @@ Route::get('/shoppingCart', 'ProductController@getCart')->name('shoppingCart');
 Route::get('/reduceOne/{id}', 'ProductController@reduceQuantityByOnee')->name('reduceOne');
 Route::get('/removeProduct/{id}', 'ProductController@removeProductFromCart')->name('removeProduct');
 
+Route::get('/profile', 'UserController@profile')->name('profile');
+
 Route::get('/finishOrder', 'OrderController@store')->name('finishOrder');
 
 Route::post('/login', 'LoginController@storeLogin')->name("login");

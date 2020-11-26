@@ -13,7 +13,16 @@
 
                         @if(Auth::guest() || Auth::user()->type =="normal")
                         <a href="{{ route('home') }}" class="button button3">Home</a>
-                        <a href="" class="button button3">Menu</a>
+                        <div class="btn-group">
+                            <a href="" class="button button3" data-toggle="dropdown">Menu</a>
+                            <ul class="dropdown-menu">
+                                <li><a href="{{ route('meat') }}">Meat</a></li>
+                                <li><a href="{{ route('salads') }}">Salads</a></li>
+                                <li><a href="{{ route('potatoes') }}">Potatoes</a></li>
+                                <li><a href="{{ route('drinks') }}">Drinks</a></li>
+                            </ul>
+                        </div>
+
                         <a href="" class="button button3">Delivery</a>
                         <a href="" class="button button3">About</a>
                         <a href="" class="button button3">Contact us</a>
@@ -52,7 +61,7 @@
 
                     <div class="row">
                         @if(Auth::check())
-                        <a href="" class="button button3">
+                        <a href="{{ route('profile') }}" class="button button3">
                         <span class="icon"></span>Profile</a>
                         @endif
                         @if(!Auth::check())

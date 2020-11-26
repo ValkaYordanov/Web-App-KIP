@@ -3,14 +3,16 @@
   text-align: center;
 }
 </style>
-   <footer class="footer">
+     <footer class="footer">
        <div class="container">
            <div class="row">
-               <div class="ce">
+               <div class="col-sm-12 col-lg-3">
+
                    <div class="footer-text">
-                       © 2020 КИП-3. Всички права запазени.
+                      © 2020 КИП-3. Всички права запазени.
                    </div>
                </div>
+
            </div>
        </div>
    </footer>
