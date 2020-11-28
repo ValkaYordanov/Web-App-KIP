@@ -10,6 +10,12 @@ use Session;
 class OrderController extends Controller
 {
 
+    public function showOrders()
+    {
+        $orders = Order::all();
+        return view('orders.orders', compact('orders'));
+    }
+
     public function store()
     {
 

@@ -28,8 +28,10 @@ Route::get('/reduceOne/{id}', 'ProductController@reduceQuantityByOnee')->name('r
 Route::get('/removeProduct/{id}', 'ProductController@removeProductFromCart')->name('removeProduct');
 
 Route::get('/profile', 'UserController@profile')->name('profile');
+Route::post('/{user}/updateProfile', 'UserController@updateProfile')->name('updateProfile');
 
 Route::get('/finishOrder', 'OrderController@store')->name('finishOrder');
+Route::get('/orders', 'OrderController@showOrders')->name('orders');
 
 Route::post('/login', 'LoginController@storeLogin')->name("login");
 Route::get('/login', 'LoginController@login')->name("login");

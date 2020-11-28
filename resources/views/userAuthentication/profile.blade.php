@@ -28,7 +28,7 @@
 
 
 
-                <form method="POST" action="">
+                <form method="POST" action="{{ route('updateProfile', $user->id) }}">
 
                     {{ csrf_field() }}
                     <div class="form__row">
