@@ -17,12 +17,17 @@ class CreateOrdersTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->unsignedBigInteger('typeOfOrder_id');
+            $table->foreign('typeOfOrder_id')->references('id')->on('order_types')->onDelete('cascade');
             $table->date('date')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->text('cart');
             $table->decimal('totalPrice');
+            $table->unsignedBigInteger('status_id');
+            $table->foreign('status_id')->references('id')->on('order_status')->onDelete('cascade');
             $table->timestamps();
 
         });
+
     }
 
     /**

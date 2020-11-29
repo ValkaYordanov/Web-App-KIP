@@ -34,30 +34,48 @@
                                     </div>
                                 </div>
                             </div>
+                            <br>
+                            <br>
+
+
+
                         </div>
                         <br>
                     @endforeach
+                     <form method="POST"  action="{{ route('finishOrder') }}" >
+                        @csrf
+                            <div class="row">
+                                <div class="col-sm-12 col-xl-10">
+                                        <label for="typeOfOrder">How you will recieve the order:</label>
+                                        <select name="typeOfOrder" class="inputClassProd" >
+                                        <option></option>
+                                            @foreach($types as $type)
+                                            <option value="{{ $type->id }}">{{$type->nameOfTheType}}</option>
+                                            @endforeach
+                                        </select>
+                                        @if ($errors->has('type')) <p style="color:red;">{{ $errors->first('type') }}</p> @endif
+                                </div>
+                            </div>
 
-                <br>
-                <br>
-                <br>
-                <br>
-                <div class="row">
-                    <div class="col-sm-12 col-xl-10">
-                        <strong >Total: {{ number_format($totalPrice,2) }}</strong>
-                    </div>
-                </div>
-                <hr>
-                <div class="row">
-                    <div class="col-sm-12 col-xl-10">
-                        @if(Auth::check())
-                        <a class="btn btn-success" href="{{ route('finishOrder') }}" type="button">Finish Order</a>
-                        @else
-                        <p>To finish order you need to log in! <a method="GET" href="{{ route('login') }}" class="button button3">
-                        <span class="icon"></span>Login</a></p>
-                        @endif
-                    </div>
-                </div>
+                            <br><br>
+                            <br><br>
+                            <div class="row">
+                                <div class="col-sm-12 col-xl-10">
+                                    <strong >Total: {{ number_format($totalPrice,2) }}</strong>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-12 col-xl-10">
+                                    @if(Auth::check())
+                                    <button><a class="btn btn-success"  type="button">Finish Order</a></button>
+                                    @else
+                                    <p>To finish order you need to log in! <a method="GET" href="{{ route('login') }}" class="button button3">
+                                    <span class="icon"></span>Login</a></p>
+                                    @endif
+                                </div>
+                            </div>
+                    </form>
                 @else
                 <div class="row">
                     <div class="col-sm-12 col-xl-10">

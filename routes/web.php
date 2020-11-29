@@ -30,7 +30,7 @@ Route::get('/removeProduct/{id}', 'ProductController@removeProductFromCart')->na
 Route::get('/profile', 'UserController@profile')->name('profile');
 Route::post('/{user}/updateProfile', 'UserController@updateProfile')->name('updateProfile');
 
-Route::get('/finishOrder', 'OrderController@store')->name('finishOrder');
+Route::post('/finishOrder', 'OrderController@store')->name('finishOrder');
 Route::get('/orders', 'OrderController@showOrders')->name('orders');
 
 Route::post('/login', 'LoginController@storeLogin')->name("login");

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ProductPostRequest;
 use App\Models\Cart;
 use App\Models\Category;
+use App\Models\OrderType;
 use App\Models\Product;
 use Cocur\Slugify\Slugify;
 use Illuminate\Http\Request;
@@ -180,9 +181,13 @@ class ProductController extends Controller
         if (!Session::has('cart')) {
             return view('products.shoppingCart', ['products' => null]);
         }
+        $types = OrderType::all();
         $oldCart = Session::get('cart');
         $cart = new Cart($oldCart);
-        return view('products.shoppingCart', ['products' => $cart->items, 'totalPrice' => $cart->totalPrice]);
+        $products = $cart->items;
+        $totalPrice = $cart->totalPrice;
+
+        return view('products.shoppingCart', compact('types', 'products', 'totalPrice'));
     }
 
     /* public function edit(Request $request, $url)
