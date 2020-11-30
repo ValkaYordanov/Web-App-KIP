@@ -23,7 +23,7 @@ class CreateOrdersTable extends Migration
             $table->text('cart');
             $table->decimal('totalPrice');
             $table->unsignedBigInteger('status_id');
-            $table->foreign('status_id')->references('id')->on('order_status')->onDelete('cascade');
+            $table->foreign('status_id')->references('id')->on('order_statuses')->onDelete('cascade');
             $table->timestamps();
 
         });

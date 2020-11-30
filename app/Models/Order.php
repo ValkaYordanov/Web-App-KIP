@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\OrderStatus;
 use App\Models\OrderType;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
@@ -19,5 +20,9 @@ class Order extends Model
     public function orderType()
     {
         return $this->belongsTo(OrderType::class);
+    }
+    public function status()
+    {
+        return $this->belongsTo(OrderStatus::class);
     }
 }

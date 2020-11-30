@@ -33,6 +33,9 @@ Route::post('/{user}/updateProfile', 'UserController@updateProfile')->name('upda
 Route::post('/finishOrder', 'OrderController@store')->name('finishOrder');
 Route::get('/orders', 'OrderController@showOrders')->name('orders');
 
+Route::get('/ordersMoveToProcess/{order}', 'OrderStatusController@moveToProcess')->name('moveToProcess');
+Route::get('/ordersMoveToReady/{order}', 'OrderStatusController@moveToReady')->name('moveToReady');
+
 Route::post('/login', 'LoginController@storeLogin')->name("login");
 Route::get('/login', 'LoginController@login')->name("login");
 

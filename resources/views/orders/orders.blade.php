@@ -4,15 +4,75 @@
 <style>
 table, th, td {
   border: 1px solid black;
+width:310px;
+height:30px;
+vertical-align:center;
+}
+td {
+  text-align: center;
+
 }
 </style>
 <main>
     <br>
     <br>
     <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-sm-12 col-xl-7">
+        <div class="row justify-content-center" >
+            <div class="col-sm-12 col-xl-4">
                 <div >
+                <h1>Waiting list</h1>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Order ID</th>
+                                <th>Customer</th>
+                                <th>Move to</th>
+
+                            </tr>
+                        </thead>
+                        @foreach($waitingOrders as $order)
+                        <tbody>
+                            <tr>
+                                <td>{{ $order->id }}</td>
+                                <td>{{ $order->user->name }} {{ $order->user->last_name }}</td>
+                                <td>
+                                    <a  href="{{ route('moveToProcess', $order) }}"> <p><img src="images/strike.png" width="30" height="15" alt=""></p></a>
+                                </td>
+                            </tr>
+                        </tbody>
+                        @endforeach
+                    </table>
+                </div>
+
+            </div>
+            <div class="col-sm-12 col-xl-4">
+                <div >
+                 <h1>In Process list</h1>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Order ID</th>
+                                <th>Customer</th>
+                                <th>Move to</th>
+                            </tr>
+                        </thead>
+                        @foreach($inProcessOrders as $order)
+                        <tbody>
+                            <tr>
+                                <td>{{ $order->id }}</td>
+                                <td>{{ $order->user->name }} {{ $order->user->last_name }}</td>
+                                <td>
+                                    <a href="{{ route('moveToReady', $order) }}"> <p><img src="images/strike.png" width="30" height="15" alt=""></p></a>
+                                </td>
+                            </tr>
+                        </tbody>
+                        @endforeach
+                    </table>
+                </div>
+            </div>
+            <div class="col-sm-12 col-xl-4">
+                <div >
+                 <h1>Ready list</h1>
                     <table>
                         <thead>
                             <tr>
@@ -21,25 +81,44 @@ table, th, td {
                                 <th>Status</th>
                             </tr>
                         </thead>
-                        @foreach($orders as $order)
+                        @foreach($readyOrders as $order)
                         <tbody>
                             <tr>
                                 <td>{{ $order->id }}</td>
-                                <td>{{ $order->user_id }}</td>
-                                <td>{{ $order->status_id }}</td>
+                                <td>{{ $order->user->name }} {{ $order->user->last_name }}</td>
+                                 <td>
+                                    <p><img src="images/check.png" width="20" height="20" alt=""></p>
+                                </td>
                             </tr>
                         </tbody>
                         @endforeach
                     </table>
                 </div>
-
             </div>
-            <div class="col-sm-12 col-xl-5">
+            <div class="col-sm-12 col-xl-3">
+                <div >
+                 <h1>Products</h1>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Order ID</th>
+                                <th>Products</th>
+                            </tr>
+                        </thead>
+                        @foreach($readyOrders as $order)
+                        <tbody>
+                            <tr>
+                                <td>{{ $order->id }}</td>
+                                <td>{{ $order->user->name }} </td>
 
-
-
+                            </tr>
+                        </tbody>
+                        @endforeach
+                    </table>
+                </div>
             </div>
         </div>
+    </div>
     <br>
     <br>
     <br>
@@ -49,6 +128,13 @@ table, th, td {
     <br>
     <br>
     <br>
-
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
 </main>
 @endsection
