@@ -19,8 +19,9 @@ class OrderController extends Controller
         $waitingOrders = Order::where('status_id', 1)->get();
         $inProcessOrders = Order::where('status_id', 2)->get();
         $readyOrders = Order::where('status_id', 3)->get();
+        $allProducts = [];
+        return view('orders.orders', compact('waitingOrders', 'inProcessOrders', 'readyOrders', 'allProducts'));
 
-        return view('orders.orders', compact('waitingOrders', 'inProcessOrders', 'readyOrders'));
     }
 
     public function store(Request $request, OrderType $typeOfOrder)
@@ -44,4 +45,16 @@ class OrderController extends Controller
         return redirect(route('home'));
     }
 
+    public function returnProducts(Order $order)
+    {
+        $cartObj = unserialize($order->cart);
+        $cart = new Cart($cartObj);
+        $allProducts = $cart;
+        $waitingOrders = Order::where('status_id', 1)->get();
+        $inProcessOrders = Order::where('status_id', 2)->get();
+        $readyOrders = Order::where('status_id', 3)->get();
+
+        return view('orders.orders', compact('waitingOrders', 'inProcessOrders', 'readyOrders', 'allProducts'));
+
+    }
 }

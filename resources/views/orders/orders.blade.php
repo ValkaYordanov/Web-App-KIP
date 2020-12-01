@@ -14,11 +14,12 @@ td {
 }
 </style>
 <main>
+
     <br>
     <br>
-    <div class="container">
+    <div class="container" style=" max-width: 1400px">
         <div class="row justify-content-center" >
-            <div class="col-sm-12 col-xl-4">
+            <div class="col-sm-12 col-xl-3">
                 <div >
                 <h1>Waiting list</h1>
                     <table>
@@ -45,7 +46,7 @@ td {
                 </div>
 
             </div>
-            <div class="col-sm-12 col-xl-4">
+            <div class="col-sm-12 col-xl-3">
                 <div >
                  <h1>In Process list</h1>
                     <table>
@@ -70,7 +71,7 @@ td {
                     </table>
                 </div>
             </div>
-            <div class="col-sm-12 col-xl-4">
+            <div class="col-sm-12 col-xl-3">
                 <div >
                  <h1>Ready list</h1>
                     <table>
@@ -84,7 +85,8 @@ td {
                         @foreach($readyOrders as $order)
                         <tbody>
                             <tr>
-                                <td>{{ $order->id }}</td>
+
+                                <td><a class="button button3" href="{{ route('returnProducts', $order) }}">{{ $order->id }}</a></td>
                                 <td>{{ $order->user->name }} {{ $order->user->last_name }}</td>
                                  <td>
                                     <p><img src="images/check.png" width="20" height="20" alt=""></p>
@@ -95,25 +97,24 @@ td {
                     </table>
                 </div>
             </div>
-            <div class="col-sm-12 col-xl-3">
+            <div class="col-sm-12 col-xl-2" >
                 <div >
-                 <h1>Products</h1>
-                    <table>
+                 <h1>Products {{ $order->id }}</h1>
+                    <table style="width:180px;">
                         <thead>
                             <tr>
-                                <th>Order ID</th>
                                 <th>Products</th>
                             </tr>
                         </thead>
-                        @foreach($readyOrders as $order)
                         <tbody>
                             <tr>
-                                <td>{{ $order->id }}</td>
-                                <td>{{ $order->user->name }} </td>
-
+                            @if($allProducts!=null)
+                        @foreach($allProducts as $prod)
+                                <td>{{ $prod->name }} </td>
+                        @endforeach
+                        @endif
                             </tr>
                         </tbody>
-                        @endforeach
                     </table>
                 </div>
             </div>
