@@ -45,7 +45,7 @@
                 </div>
                 <div style="width: 25%;"   class="column-button">
                 <div class="row">
-                <p><a class="button button3"  href="">Update</a></p>
+                <p><a class="button button3"  href="{{ route('showUpdateProduct', $product->id) }}">Update</a></p>
 
                 </div>
 

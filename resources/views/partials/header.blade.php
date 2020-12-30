@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-sm-12">
                 <div class="header__left">
-                    <a href="{{ route('home') }}"><img src="/images/logo.png"  width="140" height="130" alt=""></a>
+                    <a href="{{ route('home') }}"><img src="../../images/logo.png"  width="140" height="130" alt=""></a>
                 </div>
                 <div class="header__right">
                     <div class="header__right-buttons">
@@ -53,7 +53,7 @@
 
                     <div class="row">
                         <a href="{{route('shoppingCart') }}">
-                        <p><img src="images/cart.png" width="30" height="30" alt="">
+                        <p><img src="../../images/cart.png" width="30" height="30" alt="">
                             Shpping cart: <span><strong>{{ Session::has('cart') ? Session::get('cart')->totalQuantity : '' }}</strong></span></p>
                         </a>
                     </div>

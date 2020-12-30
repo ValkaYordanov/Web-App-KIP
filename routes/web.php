@@ -26,6 +26,8 @@ Route::get('/addOrderLine/{id}', 'ProductController@addToCart')->name('addToCart
 Route::get('/shoppingCart', 'ProductController@getCart')->name('shoppingCart');
 Route::get('/reduceOne/{id}', 'ProductController@reduceQuantityByOnee')->name('reduceOne');
 Route::get('/removeProduct/{id}', 'ProductController@removeProductFromCart')->name('removeProduct');
+Route::get('/updateProduct/{id}', 'ProductController@showUpdateProduct')->name('showUpdateProduct');
+Route::post('/updateProduct/{prod}', 'ProductController@updateProduct')->name('updateProduct');
 
 Route::get('/profile', 'UserController@profile')->name('profile');
 Route::post('/{user}/updateProfile', 'UserController@updateProfile')->name('updateProfile');

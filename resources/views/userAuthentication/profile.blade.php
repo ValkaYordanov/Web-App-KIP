@@ -5,7 +5,7 @@
 <main>
     <div class="container">
         <div class="row justify-content-center">
-                <div class="col-sm-12 col-xl-7">
+            <div class="col-sm-12 col-xl-7">
 
                 <br>
                 <br>
@@ -146,5 +146,6 @@
 
             </div>
         </div>
+    </div>
 </main>
 @endsection

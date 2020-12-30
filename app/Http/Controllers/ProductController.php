@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProductPostRequest;
+use App\Http\Requests\UpdateProductPostRequest;
 use App\Models\Cart;
 use App\Models\Category;
 use App\Models\OrderType;
@@ -190,6 +191,53 @@ class ProductController extends Controller
         return view('products.shoppingCart', compact('types', 'products', 'totalPrice'));
     }
 
+    public function showUpdateProduct($id)
+    {
+        $product = Product::find($id);
+        $categories = Category::all();
+
+        return view('products.updateProduct', compact('product', 'categories'));
+
+    }
+
+    public function updateProduct(UpdateProductPostRequest $request, Product $prod)
+    {
+        if ($request->file('image') != null) {
+            $image = $request->file('image');
+            $filename = $request->file('image')->getClientOriginalName();
+            $request->image->move(public_path('image'), $filename);
+            $path = 'image/' . $filename;
+        }
+
+        if ($request['name'] != null) {
+            $slug = app("slugifier")->Slugify($request['name']);
+
+            $products = Product::all();
+            foreach ($products->except([$prod->id]) as $product) {
+                if ($product->url == $slug) {
+
+                    return redirect()->back()->withInput()->withError("Това име или URL вече съществува, моля въведете ново!");
+
+                }
+            }
+        }
+
+        $prod->update([
+
+            'name' => $request->input('name'),
+            'category_id' => $request->category,
+            'url' => $slug,
+            'description' => $request->input('description'),
+            'price' => $request->input('price'),
+            'stock' => $request->input('stock'),
+            'pic_path' => $request->file('image') ? $path : $prod->pic_path,
+            'date' => date('Y-m-d'),
+
+        ]);
+
+        return redirect(route('allProducts'));
+
+    }
     /* public function edit(Request $request, $url)
 {
 

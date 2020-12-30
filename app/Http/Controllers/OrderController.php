@@ -49,7 +49,7 @@ class OrderController extends Controller
     {
         $cartObj = unserialize($order->cart);
         $cart = new Cart($cartObj);
-        $allProducts = $cart;
+        $allProducts = $cart->items;
         $waitingOrders = Order::where('status_id', 1)->get();
         $inProcessOrders = Order::where('status_id', 2)->get();
         $readyOrders = Order::where('status_id', 3)->get();
