@@ -31,6 +31,8 @@ Route::post('/updateProduct/{prod}', 'ProductController@updateProduct')->name('u
 
 Route::get('/profile', 'UserController@profile')->name('profile');
 Route::post('/{user}/updateProfile', 'UserController@updateProfile')->name('updateProfile');
+Route::get('/allUsers', 'UserController@allUsers')->name('allUsers');
+Route::get('/deleteUSer/{id}', 'UserController@deleteUSer')->name('deleteUser');
 
 Route::post('/finishOrder', 'OrderController@store')->name('finishOrder');
 Route::get('/orders', 'OrderController@showOrders')->name('orders');

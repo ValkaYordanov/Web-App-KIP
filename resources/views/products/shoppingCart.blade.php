@@ -53,9 +53,11 @@
                                             <option value="{{ $type->id }}">{{$type->nameOfTheType}}</option>
                                             @endforeach
                                         </select>
-                                        @if ($errors->has('type')) <p style="color:red;">{{ $errors->first('type') }}</p> @endif
                                 </div>
                             </div>
+                                @if (session::has('errors'))
+                                <p style="color:red;">  {{session('errors')->first('orderTypeErr')}} </p>
+                                @endif
 
                             <br><br>
                             <br><br>

@@ -17,13 +17,6 @@ class RegistrationController extends Controller
     {
         $users = User::all();
 
-        foreach ($users as $userObject) {
-            if ($userObject->email == $request->input('email')) {
-                return redirect()->back()->withInput()->withError('emailErr', "This Email is already in use!");
-
-            }
-        }
-
         $user = User::create([
             'name' => $request->input('name'),
             'last_name' => $request->input('lastname'),

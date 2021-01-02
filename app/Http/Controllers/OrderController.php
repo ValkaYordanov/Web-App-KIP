@@ -27,6 +27,10 @@ class OrderController extends Controller
     public function store(Request $request, OrderType $typeOfOrder)
     {
 
+        if ($request->typeOfOrder == null) {
+            return redirect()->back()->withInput()->withErrors(['orderTypeErr' => "The Type of order field is required!"]);
+
+        }
         $oldCart = Session::get('cart');
         $cart = new Cart($oldCart);
         $statusOrder = OrderStatus::find(1);
@@ -42,6 +46,8 @@ class OrderController extends Controller
 
         ]);
         Session::forget('cart');
+        session(['cancleBtn' => 'true']);
+
         return redirect(route('home'));
     }
 

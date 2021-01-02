@@ -20,12 +20,16 @@
                                 <li><a href="{{ route('salads') }}">Salads</a></li>
                                 <li><a href="{{ route('potatoes') }}">Potatoes</a></li>
                                 <li><a href="{{ route('drinks') }}">Drinks</a></li>
+
                             </ul>
                         </div>
 
                         <a href="" class="button button3">Delivery</a>
                         <a href="" class="button button3">About</a>
                         <a href="" class="button button3">Contact us</a>
+                            @if(session()->has('cancleBtn'))
+                                     <a href="" class="button button3">Cancle order</a>
+                            @endif
                         @endif
 
 
@@ -33,7 +37,7 @@
                         @if(Auth::user()->type =="admin")
                         <a href="{{ route('orders') }}" class="button button3">Orders</a>
                         <a href="{{ route('allProducts') }}" class="button button3">Products</a>
-                        <a href="" class="button button3">Users</a>
+                        <a href="{{ route('allUsers') }}" class="button button3">Users</a>
                         @endif
                         @endif
 

@@ -42,4 +42,21 @@ class UserController extends Controller
 
         return redirect(route('home'));
     }
+
+    public function allUsers()
+    {
+        $allUsers = User::all();
+        return view('administration.allUsers', compact('allUsers'));
+
+    }
+
+    public function deleteUser($id)
+    {
+        $user = User::find(intval($id));
+
+        $user->delete();
+
+        return redirect(route('allUsers'));
+
+    }
 }
