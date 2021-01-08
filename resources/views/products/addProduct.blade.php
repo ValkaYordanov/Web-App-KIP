@@ -11,7 +11,7 @@
                     <br>
                 <div  class="col-sm-12 col-xl-6">
 
-                    <form method="POST"  action="{{ route('createProduct') }}" enctype="multipart/form-data">
+                    <form method="POST"  action="{{ route('products.add') }}" enctype="multipart/form-data">
                         @csrf
 
 

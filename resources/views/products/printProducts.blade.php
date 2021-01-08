@@ -54,11 +54,11 @@ input{
                             @if(Auth::check())
                             @if(Auth::user()->type =="admin")
                             <div class="row">
-                                <p><a class="button button3" style="width:120px;height:45px;vertical-align:middle;text-align: center;line-height: 40px;  font-size: 22px" href="{{ route('showUpdateProduct', $product->id) }}">Update</a></p>
+                                <p><a class="button button3" style="width:120px;height:45px;vertical-align:middle;text-align: center;line-height: 40px;  font-size: 22px" href="{{ route('products.update', $product->id) }}">Update</a></p>
                             </div>
 
                             <div class="row">
-                                <p><a class="button button3" style="width:120px;height:45px;vertical-align:middle;text-align: center;line-height: 40px;  font-size: 22px"  onclick="return confirm('Do you want to delete this product?')" href="{{ route('product.delete', $product->id) }}">Delete</a></p>
+                                <p><a class="button button3" style="width:120px;height:45px;vertical-align:middle;text-align: center;line-height: 40px;  font-size: 22px"  onclick="return confirm('Do you want to delete this product?')" href="{{ route('products.delete', $product->id) }}">Delete</a></p>
                             </div>
                             @endif
                             @endif

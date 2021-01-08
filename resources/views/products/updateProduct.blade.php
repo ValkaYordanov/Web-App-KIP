@@ -32,7 +32,7 @@
 
 
 
-                <form method="POST"  action="{{ route('updateProduct', $product) }}" enctype="multipart/form-data">
+                <form method="POST"  action="{{ route('products.update', $product) }}" enctype="multipart/form-data">
                         @csrf
 
 
