@@ -11,11 +11,11 @@
                 <br>
                 <h1>Your profile</h1>
                 <br>
-                <p>Your name: {{$user->name}}</p>
-                <p>Your last name: {{$user->last_name}}</p>
-                <p>Your email: {{$user->email}}</p>
-                <p>Your street: {{$user->street}}</p>
-                <p>Your №: {{$user->strNumber}}</p>
+                <p>Your name: <strong>{{$user->name}}</strong></p>
+                <p>Your last name: <strong>{{$user->last_name}}</strong></p>
+                <p>Your email: <strong>{{$user->email}}</strong></p>
+                <p>Your street: <strong>{{$user->street}}</strong></p>
+                <p>Your №: <strong>{{$user->strNumber}}</strong></p>
 
             </div>
             <div class="col-sm-12 col-xl-5">

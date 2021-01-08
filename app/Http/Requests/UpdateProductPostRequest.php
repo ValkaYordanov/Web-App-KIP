@@ -26,13 +26,30 @@ class UpdateProductPostRequest extends FormRequest
     {
 
         $rules = [
+            'name' => 'required',
             'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'price' => 'numeric|min:0',
-            'stock' => 'numeric|min:0',
+            'price' => 'numeric|min:0|required',
+            'stock' => 'numeric|min:0|required',
+            'category' => 'required',
 
         ];
 
         return $rules;
+    }
+
+    /**
+     * Validation attributes
+     *
+     * @return array
+     */
+    public function attributes()
+    {
+        return [
+            'name' => 'Name',
+            'category' => 'Category',
+            'price' => 'Price',
+            'stock' => 'Stock',
+        ];
     }
 
     /**
@@ -43,7 +60,8 @@ class UpdateProductPostRequest extends FormRequest
     public function messages()
     {
         return [
-            'numeric' => 'It has to be a number!',
+            'required' => 'The :attribute field is required!',
+            'numeric' => 'The :attribute field it has to be a number!',
             'mimes' => 'Wrong format!',
             'image' => 'Image is wrong!',
         ];

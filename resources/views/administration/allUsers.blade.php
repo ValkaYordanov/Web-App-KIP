@@ -23,7 +23,7 @@
                             <td>{{ $user->name }}</td>
                             <td>{{ $user->last_name }}</td>
                             <td>{{ $user->email }}</td>
-                            <td><p><a class="button button3"  onclick="return confirm('Do you want to delete this product?')" href="{{ route('deleteUser', $user->id) }}">Delete</a></p></td>
+                            <td><p><a class="button button3"  onclick="return confirm('Do you want to delete this user?')" href="{{ route('deleteUser', $user->id) }}">Delete</a></p></td>
 
                         </tr>
                     </tbody>

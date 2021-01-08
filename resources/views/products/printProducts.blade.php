@@ -43,18 +43,26 @@ input{
                         @endif
                         <p  id="myDiv">{{ $product->description }}</p>
                     </div>
-                    <div style="width: 25%;"   class="column-button">
-                        <div class="row">
-                            <input class="quantity" style="width: 35%;" min="0" name="quantity" value="0" type="number">
-                        </div>
-                        <br>
+                    <div style="width: 35%; "   class="column-button">
                         <div class="row">
                             @if($product->stock<=0)
                                 <p>Out of Stock</p>
                             @else
-                            <a role="button" href="{{ route('addToCart', $product->id) }}" class="button button3" >Add</a>
+                            <p><a role="button" href="{{ route('addToCart', $product->id) }}" style="width:100px;height:45px;vertical-align:middle;text-align: center;line-height: 40px;  font-size: 22px" class="button button3" >Add</a></p>
                             @endif
                         </div>
+                            @if(Auth::check())
+                            @if(Auth::user()->type =="admin")
+                            <div class="row">
+                                <p><a class="button button3" style="width:120px;height:45px;vertical-align:middle;text-align: center;line-height: 40px;  font-size: 22px" href="{{ route('showUpdateProduct', $product->id) }}">Update</a></p>
+                            </div>
+
+                            <div class="row">
+                                <p><a class="button button3" style="width:120px;height:45px;vertical-align:middle;text-align: center;line-height: 40px;  font-size: 22px"  onclick="return confirm('Do you want to delete this product?')" href="{{ route('product.delete', $product->id) }}">Delete</a></p>
+                            </div>
+                            @endif
+                            @endif
+
                     </div>
                 </div>
 

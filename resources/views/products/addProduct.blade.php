@@ -19,6 +19,9 @@
                             <label for="name">Name:</label>
                             <input type="text" class="inputClassProd" id="name" name="name" value="{{ old('name') }}">
                             @if ($errors->has('name')) <p style="color:red;">{{ $errors->first('name') }}</p> @endif
+                             @if (Session::has('errors'))
+                            <p style="color:red;">  {{session('errors')->first('nameExist')}} </p>
+                            @endif
                         </div>
 
                          <div class="form-group">
@@ -26,7 +29,7 @@
                             <select name="category" class="inputClassProd" >
                             <option></option>
                                 @foreach($categories as $category)
-                                <option value="{{$category->id}}">{{$category->name}}</option>
+                                <option value="{{$category->id}}" {{ (collect(old('category'))->contains($category->id)) ? 'selected':'' }} >{{$category->name}}</option>
                                 @endforeach
                             </select>
                             @if ($errors->has('category')) <p style="color:red;">{{ $errors->first('category') }}</p> @endif
@@ -35,8 +38,7 @@
 
                         <div class="form-group">
                             <label for="description">Description:</label>
-                            <textarea id="description" id="description" name="description" rows="4" cols="50"></textarea>
-                            @if ($errors->has('description')) <p style="color:red;">{{ $errors->first('description') }}</p> @endif
+                            <textarea id="description" id="description" name="description" rows="4" cols="50">{{old('description') }}</textarea>
                         </div>
 
                         <div class="form-group">
@@ -53,8 +55,8 @@
 
                         <div class="form-group">
                             <label for="file">Upload picture:</label>
-                            <input type="file" class="inputClassProd" id="file" name="image" >
-                            @if ($errors->has('file')) <p style="color:red;">{{ $errors->first('file') }}</p> @endif
+                            <input type="file" class="inputClassProd" id="file" name="image" value="{{ old('image') }}">
+                            @if ($errors->has('image')) <p style="color:red;">{{ $errors->first('image') }}</p> @endif
                         </div>
 
 

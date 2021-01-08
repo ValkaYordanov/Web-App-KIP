@@ -82,6 +82,16 @@
                 <div class="row">
                     <div class="col-sm-12 col-xl-10">
                         <h2>No Items in Cart!</h2>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
                     </div>
                 </div>
 

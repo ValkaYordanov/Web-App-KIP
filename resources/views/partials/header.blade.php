@@ -36,7 +36,15 @@
                         @if(Auth::check())
                         @if(Auth::user()->type =="admin")
                         <a href="{{ route('orders') }}" class="button button3">Orders</a>
-                        <a href="{{ route('allProducts') }}" class="button button3">Products</a>
+                        <a href="{{ route('addProduct') }}" class="button button3">Add new product</a>
+                        <a href="" class="button button3" data-toggle="dropdown">Products</a>
+                            <ul class="dropdown-menu">
+                                <li><a href="{{ route('meat') }}">Meat</a></li>
+                                <li><a href="{{ route('salads') }}">Salads</a></li>
+                                <li><a href="{{ route('potatoes') }}">Potatoes</a></li>
+                                <li><a href="{{ route('drinks') }}">Drinks</a></li>
+
+                            </ul>
                         <a href="{{ route('allUsers') }}" class="button button3">Users</a>
                         @endif
                         @endif

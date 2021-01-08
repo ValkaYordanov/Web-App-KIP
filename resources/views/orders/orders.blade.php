@@ -97,9 +97,9 @@ td {
                     </table>
                 </div>
             </div>
-            <div class="col-sm-12 col-xl-2" >
+            <div class="col-sm-12 col-xl-3" >
                 <div >
-                 <h1>Products</h1>
+                <p style="font-size: 25px; color:red;"><strong> Products for order {{$orderId}}</strong></p>
                     <table style="width:180px;">
                         <thead>
                             <tr>

@@ -13,7 +13,6 @@ use Illuminate\Support\Facades\Route;
  */
 
 Route::get('/', 'ProductController@home')->name("home");
-Route::get('/allProducts', 'ProductController@printAllProducts')->name("allProducts");
 Route::get('/addProduct', 'ProductController@addProduct')->name("addProduct");
 Route::post('/addProduct', 'ProductController@createProduct')->name("createProduct");
 Route::get('/{product}/delete', 'ProductController@delete')->name("product.delete");

@@ -9,7 +9,7 @@
                <div class="col-sm-12 col-lg-3">
 
                    <div class="footer-text">
-                      © 2020 КИП-3. Всички права запазени.
+                      © 2020 KIP-3. All rights reserved.
                    </div>
                </div>
 

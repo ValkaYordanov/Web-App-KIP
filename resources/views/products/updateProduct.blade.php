@@ -15,11 +15,11 @@
                 <br>
                 <h1>Current Product Information</h1>
                 <br>
-                <p>Product name: {{$product->name}}</p>
-                <p>Product category: {{$product->category['name']}}</p>
-                <p>Product description: {{$product->description}}</p>
-                <p>Product price: {{$product->price}}</p>
-                <p>Product stock: {{$product->stock}}</p>
+                <p>Product name: <strong>{{$product->name}}</strong></p>
+                <p>Product category: <strong>{{$product->category['name']}}</strong></p>
+                <p>Product description: <strong>{{$product->description}}</strong></p>
+                <p>Product price: <strong>{{$product->price}}</strong></p>
+                <p>Product stock: <strong>{{$product->stock}}</strong></p>
 
             </div>
             <div class="col-sm-12 col-xl-5">
@@ -38,19 +38,22 @@
 
                         <div class="form-group">
                             <label for="name">Name:</label>
-                            <input type="text" class="inputClassProd" id="name" name="name" value="{{ $product->name }}">
-
+                            <input type="text" class="inputClassProd" id="name" name="name" value="{{ old('name') }}">
+                            @if ($errors->has('name')) <p style="color:red;">{{ $errors->first('name') }}</p> @endif
+                            @if (Session::has('errors'))
+                            <p style="color:red;">  {{session('errors')->first('nameExist')}} </p>
+                            @endif
                         </div>
 
                          <div class="form-group">
                             <label for="name">Category:</label>
-                            <select name="category" class="inputClassProd" value="{{ $product->category->name }}>
+                            <select name="category" class="inputClassProd" >
                             <option></option>
                                 @foreach($categories as $category)
-                                <option value="{{$category->id}}">{{$category->name}}</option>
+                                <option value="{{$category->id}}" {{ (collect(old('category'))->contains($category->id)) ? 'selected':'' }} >{{$category->name}}</option>
                                 @endforeach
                             </select>
-
+                            @if ($errors->has('category')) <p style="color:red;">{{ $errors->first('category') }}</p> @endif
                         </div>
 
 
@@ -62,13 +65,13 @@
 
                         <div class="form-group">
                             <label for="price">Price:</label>
-                            <input type="number" step="0.01" min="0" class="inputClassProd" id="price" name="price" value="{{ $product->price }}">
+                            <input type="number" step="0.01" min="0" class="inputClassProd" id="price" name="price" value="{{ old('price') }}">
                             @if ($errors->has('price')) <p style="color:red;">{{ $errors->first('price') }}</p> @endif
                         </div>
 
                         <div class="form-group">
                             <label for="stock">Stock:</label>
-                            <input type="number" step="1" min="0" class="inputClassProd" id="stock" name="stock" value="{{ $product->stock }}">
+                            <input type="number" step="1" min="0" class="inputClassProd" id="stock" name="stock" value="{{ old('stock') }}">
                             @if ($errors->has('stock')) <p style="color:red;">{{ $errors->first('stock') }}</p> @endif
                         </div>
 

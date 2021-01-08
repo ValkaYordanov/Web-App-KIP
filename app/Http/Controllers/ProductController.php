@@ -20,13 +20,6 @@ class ProductController extends Controller
         return view('products.main');
     }
 
-    public function printAllProducts()
-    {
-        $products = Product::all();
-        return view('products.allProducts', compact('products'));
-
-    }
-
     public function addProduct()
     {
         $categories = Category::all();
@@ -52,8 +45,7 @@ class ProductController extends Controller
         foreach ($products as $product) {
             if ($product->url == $slug) {
 
-                return redirect()->back()->withInput()->withError("Това име или URL вече съществува, моля въведете ново!");
-
+                return redirect()->back()->withInput()->withErrors(['nameExist' => "This name is already in use!"]);
             }
         }
 
@@ -216,7 +208,7 @@ class ProductController extends Controller
             foreach ($products->except([$prod->id]) as $product) {
                 if ($product->url == $slug) {
 
-                    return redirect()->back()->withInput()->withError("Това име или URL вече съществува, моля въведете ново!");
+                    return redirect()->back()->withInput()->withErrors(['nameExist' => "This name is already in use!"]);
 
                 }
             }
