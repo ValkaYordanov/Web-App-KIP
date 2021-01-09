@@ -71,7 +71,7 @@ class ProductController extends Controller
 
         $productObj->delete();
 
-        return redirect(route('allProducts'));
+        return redirect(route('home'));
     }
 
     public function meatProducts()
@@ -227,56 +227,8 @@ class ProductController extends Controller
 
         ]);
 
-        return redirect(route('allProducts'));
+        return redirect(route('home'));
 
     }
-    /* public function edit(Request $request, $url)
-{
-
-$articles = Article::all();
-foreach($articles as $article)
-{
-if($article->url == $url)
-{
-return view('posts.update', compact('article'));
-}
-}
-
-}
-
-public function update(ArticlePostRequest $request, Article $article)
-{
-
-if($request->input('url') == null)
-{
-$slug = app("slugifier")->Slugify($request['name']);
-}
-else
-{
-$slug = $request['url'];
-}
-
-$articles = Article::all();
-foreach($articles->except([$article->id]) as $articleObject)
-{
-if($articleObject->url == $slug)
-{
-
-return back()->withErrors("Този URL вече съществува!");
-
-}
-}
-
-$article->update([
-'name' => $request->input('name'),
-'url' => $slug,
-'description' => $request->input('description'),
-'link' => substr($request->input('link'),17),
-
-]);
-
-return redirect(route('articles.index'));
-
-}*/
 
 }

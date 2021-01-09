@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\RegistrationPostRequest;
+use App\Mail\RegistrationEmail;
 use App\Models\User;
 use Auth;
+use Mail;
 
 class RegistrationController extends Controller
 {
@@ -30,6 +32,8 @@ class RegistrationController extends Controller
         ]);
 
         Auth::login($user);
+        \Mail::to($user)->send(new RegistrationEmail($user));
+
         return redirect(route('home'));
 
     }

@@ -9,6 +9,8 @@
             <div class="col-sm-12 col-xl-10">
             <br>
             <br>
+            <br>
+            <br>
              <div class="row">
                  <div style="width: 30%;text-align: center;" class="column">
                     <a href="{{ route('meat') }}">
@@ -49,6 +51,12 @@
         </div>
     </div>
 
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
     <br>
     <br>
     <br>

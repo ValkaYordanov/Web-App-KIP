@@ -96,3 +96,8 @@ Route::get('/login', 'LoginController@login')->name("login");
 
 Route::post('/registration', 'RegistrationController@create')->name("registration");
 Route::get('/registration', 'RegistrationController@add')->name("addUser");
+
+Route::get('/forgottenPassword', 'UserController@setEmail')->name("setEmail");
+Route::post('/setEmail', 'UserController@passwordReset')->name("reset");
+Route::get('{user}/changePassword', 'UserController@change')->name("change");
+Route::post('{user}/changePassword', 'UserController@changePassword')->name("changePassword");

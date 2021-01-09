@@ -25,13 +25,16 @@ class UserPostRequest extends FormRequest
     public function rules()
     {
 
-        $rules = [
-            'name' => 'required',
-            'lastname' => 'required',
-            'street' => 'required',
-            'strNumber' => 'required|integer',
-            'email' => 'required|email',
-        ];
+        if (\Arr::has($this->input(), 'email')) {
+            $rules = [
+                'name' => 'required',
+                'lastname' => 'required',
+                'street' => 'required',
+                'strNumber' => 'required|integer',
+                'email' => 'required|email',
+            ];
+
+        }
 
         $rules['password'] = 'required|confirmed';
         $rules['password_confirmation'] = 'required';

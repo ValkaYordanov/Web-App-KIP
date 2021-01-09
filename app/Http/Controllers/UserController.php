@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\UserPostRequest;
+use App\Mail\ResetPasswordEmail;
 use App\Models\User;
 use Auth;
+use Illuminate\Http\Request;
+use Mail;
 
 class UserController extends Controller
 {
@@ -57,6 +60,47 @@ class UserController extends Controller
         $user->delete();
 
         return redirect(route('users.index'));
+
+    }
+
+    public function setEmail()
+    {
+        return view('userAuthentication.setEmail');
+
+    }
+
+    public function passwordReset(Request $request)
+    {
+
+        $user = User::whereEmail($request->email)->first();
+
+        if ($user == null) {
+            return back()->with(['error' => 'There is no user with this email!']);
+        }
+
+        $user = User::find($user->id);
+
+        \Mail::to($user)->send(new ResetPasswordEmail($user));
+
+        return back()->with(['success' => 'Check your email for a link to change your passowrd!']);
+    }
+
+    public function change($user)
+    {
+        $user = User::find($user);
+
+        return view('userAuthentication.changePassword', compact('user'));
+    }
+
+    public function changePassword(UserPostRequest $request, User $user)
+    {
+
+        $user->update([
+
+            'password' => bcrypt($request->input('password')),
+        ]);
+
+        return redirect(route('login'));
 
     }
 }

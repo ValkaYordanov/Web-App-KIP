@@ -46,7 +46,8 @@
 
                     <div class="form__row form__row--buttons">
                         <div class="form__group">
-                            <button class="button button4">Login</button>
+                            <button style="margin-right:120px;" class="button button4">Login</button>
+                            <a href="{{ route('setEmail') }}" style="color: blue;">   Forgotten password</a>
                         </div>
 
                         <!-- /form__group -->
