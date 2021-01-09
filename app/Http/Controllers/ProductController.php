@@ -76,29 +76,41 @@ class ProductController extends Controller
 
     public function meatProducts()
     {
-        $products = Product::where('category_id', 2)->get();
-        return view('products.printProducts', compact('products'));
+        return view('products.printProducts', [
+
+            'products' => Product::where('category_id', 2)->paginate(2),
+
+        ]);
 
     }
 
     public function saladProducts()
     {
-        $products = Product::where('category_id', 1)->get();
-        return view('products.printProducts', compact('products'));
+        return view('products.printProducts', [
+
+            'products' => Product::where('category_id', 1)->paginate(2),
+
+        ]);
 
     }
 
     public function potatoeProducts()
     {
-        $products = Product::where('category_id', 3)->get();
-        return view('products.printProducts', compact('products'));
+        return view('products.printProducts', [
+
+            'products' => Product::where('category_id', 3)->paginate(2),
+
+        ]);
 
     }
 
     public function drinkProducts()
     {
-        $products = Product::where('category_id', 4)->get();
-        return view('products.printProducts', compact('products'));
+        return view('products.printProducts', [
+
+            'products' => Product::where('category_id', 4)->paginate(2),
+
+        ]);
 
     }
 
@@ -107,11 +119,16 @@ class ProductController extends Controller
         $product = Product::find($id);
         $productQuantity = $product->stock - 1;
 
-        $product->update([
-            'stock' => $productQuantity,
+        if ($product->stock > 0) {
+            $product->update([
 
-        ]);
+                'stock' => $productQuantity,
 
+            ]);
+        } else {
+            return redirect()->back();
+
+        }
         $oldCart = Session::has('cart') ? Session::get('cart') : null;
         $cart = new Cart($oldCart);
         $cart->add($product, $product->id);

@@ -35,13 +35,17 @@ input{
                     </div>
                     <div  style="width: 60%;" class="column">
                         <h1>{{ $product->name }}</h1>
-                        <p class="price">Price: {{ $product->price }}</p>
+                        <p class="textForProd">Price: <strong>{{ $product->price }}</strong></p>
+                        @if(Auth::check())
+                        @if(Auth::user()->type =="admin")
                         @if($product->stock<=0)
-                            <p class="price">Out of Stock</p>
+                            <p class="textForProd">Out of Stock</p>
                         @else
-                            <p class="price">Stock: {{ $product->stock }}</p>
+                            <p class="textForProd">Stock: {{ $product->stock }}</p>
                         @endif
-                        <p  id="myDiv">{{ $product->description }}</p>
+                        @endif
+                        @endif
+                        <p class="textForProd" id="myDiv">{{ $product->description }}</p>
                     </div>
                     <div style="width: 35%; "   class="column-button">
                         <div class="row">
@@ -69,6 +73,7 @@ input{
             </div>
         </div>
     @endforeach
+      {{$products->links('products.pagination-links')}}
 <br>
 <br>
 <br>

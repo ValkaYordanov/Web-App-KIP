@@ -14,20 +14,25 @@
                         <div class="container">
                             <div class="card">
                                 <div class="row">
-                                    <div style="width: 30%;" class="column">
+                                    <div style="width: 25%;" class="column">
                                         <p>Product:  <strong>{{ $product['item']['name'] }}</strong></p>
                                         <p>Quantity:  <strong>{{ $product['qty'] }}</strong></p>
                                         <p class="label label-success">Price for 1:  <strong>{{  number_format($product['item']['price'],2) }}</strong></p>
                                         <p class="label label-success">Price:  <strong>{{  number_format($product['price'],2) }}</strong></p>
                                     </div>
 
-                                    <div class="column" style="width:35%; height:100px;  text-align: center;">
+                                    <div class="column" style="width:25%; height:100px;  text-align: center;">
                                         <a href="{{ route('reduceOne', $product['item']['id']) }}">
-                                            <p><img src="images/minus1.png" width="30" height="30" alt=""></p>
+                                            <p><img src="images/minusOne.png" width="30" height="30" alt=""></p>
+                                        </a>
+                                    </div>
+                                      <div class="column" style="width:25%; height:100px;  text-align: center;">
+                                        <a href="{{ route('addToCart', $product['item']['id']) }}">
+                                            <p><img src="images/plusOne.png" width="30" height="30" alt=""></p>
                                         </a>
                                     </div>
 
-                                    <div class="column" style="width:35%; height:100px;  text-align: center;">
+                                    <div class="column" style="width:25%; height:100px;  text-align: center;">
                                         <a href="{{ route('removeProduct', $product['item']['id']) }}">
                                             <p><img src="images/trash-can.png" width="30" height="30" alt=""></p>
                                         </a>

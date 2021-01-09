@@ -27,9 +27,7 @@
                         <a href="" class="button button3">Delivery</a>
                         <a href="" class="button button3">About</a>
                         <a href="" class="button button3">Contact us</a>
-                            @if(session()->has('cancleBtn'))
-                                     <a href="" class="button button3">Cancle order</a>
-                            @endif
+
                         @endif
 
 
