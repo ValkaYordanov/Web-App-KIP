@@ -33,11 +33,6 @@ class ProductController extends Controller
         $filename = $request->file('image')->getClientOriginalName();
         $request->image->move(public_path('image'), $filename);
         $path = 'image/' . $filename;
-        /*  return back()
-
-        ->with('success', 'You have successfully upload image.')
-
-        ->with('image', $filename);*/
 
         $slug = app("slugifier")->Slugify($request['name']);
 

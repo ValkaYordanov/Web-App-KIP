@@ -35,7 +35,7 @@ td {
                         <tbody>
                             <tr>
                                 <td><a class="button button3" href="{{ route('orders.returnProducts', $order) }}">{{ $order->id }}</a></td>
-                                <td>{{ $order->user->name }} {{ $order->user->last_name }}</td>
+                                <td>{{ $order->user->name }} - {{ $order->user->email }}</td>
                                 <td>
                                     <a  href="{{ route('orders.moveToProcess', $order) }}"> <p><img src="../../images/strike.png" width="30" height="15" alt=""></p></a>
                                 </td>
@@ -61,7 +61,7 @@ td {
                         <tbody>
                             <tr>
                                 <td><a class="button button3" href="{{ route('orders.returnProducts', $order) }}">{{ $order->id }}</a></td>
-                                <td>{{ $order->user->name }} {{ $order->user->last_name }}</td>
+                                <td>{{ $order->user->name }} - {{ $order->user->email }}</td>
                                 <td>
                                     <a href="{{ route('orders.moveToReady', $order) }}"> <p><img src="../../images/strike.png" width="30" height="15" alt=""></p></a>
                                 </td>
@@ -87,7 +87,7 @@ td {
                             <tr>
 
                                 <td><a class="button button3" href="{{ route('orders.returnProducts', $order) }}">{{ $order->id }}</a></td>
-                                <td>{{ $order->user->name }} {{ $order->user->last_name }}</td>
+                                <td>{{ $order->user->name }} - {{ $order->user->email }}</td>
                                  <td>
                                     <p><img src="../../images/check.png" width="20" height="20" alt=""></p>
                                 </td>
