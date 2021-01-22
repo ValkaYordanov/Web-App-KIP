@@ -4,6 +4,8 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-sm-12 col-xl-4">
+                    <br>
+                    <br>
                 <br>
                 <hr>
                 <h1>Login</h1>
@@ -53,6 +55,16 @@
                         <!-- /form__group -->
                     </div>
 
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
                     <br>
                     <br>
                     <br>

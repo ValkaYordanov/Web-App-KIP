@@ -57,7 +57,7 @@ class ProductController extends Controller
 
         ]);
 
-        return redirect(route('allProducts'));
+        return redirect(route('home'));
     }
 
     public function delete($product)
