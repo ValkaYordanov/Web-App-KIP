@@ -101,3 +101,6 @@ Route::get('/forgottenPassword', 'UserController@setEmail')->name("setEmail");
 Route::post('/setEmail', 'UserController@passwordReset')->name("reset");
 Route::get('{user}/changePassword', 'UserController@change')->name("change");
 Route::post('{user}/changePassword', 'UserController@changePassword')->name("changePassword");
+
+Route::get('/about', 'UserController@aboutPage')->name("about");
+Route::get('/contact', 'UserController@contactPage')->name("contact");

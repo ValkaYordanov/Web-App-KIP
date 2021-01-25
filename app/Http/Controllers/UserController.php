@@ -103,4 +103,16 @@ class UserController extends Controller
         return redirect(route('login'));
 
     }
+
+    public function aboutPage()
+    {
+        return view('layouts.about');
+
+    }
+
+    public function contactPage()
+    {
+        return view('layouts.contact');
+
+    }
 }

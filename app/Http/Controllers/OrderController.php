@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Cart;
 use App\Models\Order;
 use App\Models\OrderStatus;
-use App\Models\OrderType;
 use App\Models\User;
 use Auth;
 use Illuminate\Http\Request;
@@ -25,7 +24,7 @@ class OrderController extends Controller
 
     }
 
-    public function store(Request $request, OrderType $typeOfOrder)
+    public function store(Request $request)
     {
 
         if ($request->typeOfOrder == null) {
@@ -34,7 +33,7 @@ class OrderController extends Controller
         }
         $oldCart = Session::get('cart');
         $cart = new Cart($oldCart);
-        $statusOrder = OrderStatus::find(1);
+        $statusOrder = OrderStatus::find(1); // set the status to waiting
 
         $order = Order::create([
 
@@ -47,7 +46,6 @@ class OrderController extends Controller
 
         ]);
         Session::forget('cart');
-        session(['cancleBtn' => 'true']);
 
         return redirect(route('home'));
     }

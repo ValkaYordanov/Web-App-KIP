@@ -26,7 +26,7 @@ class ProductController extends Controller
         return view('products.addProduct', compact('categories'));
     }
 
-    public function createProduct(Category $category, ProductPostRequest $request)
+    public function createProduct(ProductPostRequest $request)
     {
 
         $image = $request->file('image');

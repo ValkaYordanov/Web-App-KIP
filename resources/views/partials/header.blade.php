@@ -24,9 +24,9 @@
                             </ul>
                         </div>
 
-                        <a href="" class="button button3">Delivery</a>
-                        <a href="" class="button button3">About</a>
-                        <a href="" class="button button3">Contact us</a>
+
+                        <a href="{{ route('about') }}" class="button button3">About</a>
+                        <a href="{{ route('contact') }}" class="button button3">Contact us</a>
 
                         @endif
 
